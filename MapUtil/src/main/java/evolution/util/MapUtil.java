@@ -5,29 +5,30 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class MapUtil {
-	public static Map<String, Double> updateCount(Map<String, Double> partialSummary, Map<String, Double> summary) {
-		if (partialSummary == null) {
-			return summary;
+	public static Map<String, Double> updateCount(Map<String, Double> partialCounts, Map<String, Double> counts) {
+		if (partialCounts == null) {
+			return counts;
 		}
-		summary = summary == null ? new HashMap<>() : summary;
-		for (Entry<String, Double> entry : partialSummary.entrySet()) {
+		counts = counts == null ? new HashMap<>() : counts;
+		for (Entry<String, Double> entry : partialCounts.entrySet()) {
 			String key = entry.getKey();
 			Double value = entry.getValue();
-			if (summary.containsKey(key)) {
-				summary.put(key, summary.get(key) + value);
+			if (counts.containsKey(key)) {
+				counts.put(key, counts.get(key) + value);
 			} else {
-				summary.put(key, value);
+				counts.put(key, value);
 			}
 		}
-		return summary;
+		return counts;
 	}
 	
-	public static Map<String, Double> updateCount(String key, Map<String, Double> summary) {
-		if (summary.containsKey(key)) {
-			summary.put(key, summary.get(key) + 1d);
+	public static Map<String, Double> updateCount(String key, Map<String, Double> counts) {
+		counts = counts == null ? new HashMap<>() : counts;
+		if (counts.containsKey(key)) {
+			counts.put(key, counts.get(key) + 1d);
 		} else {
-			summary.put(key, 1d);
+			counts.put(key, 1d);
 		}
-		return summary;
+		return counts;
 	}
 }
