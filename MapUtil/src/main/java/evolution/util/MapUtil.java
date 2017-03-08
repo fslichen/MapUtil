@@ -5,11 +5,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class MapUtil {
-	public static Map<String, Integer> updateCount(Map<String, Integer> partialSummary, Map<String, Integer> summary) {
+	public static Map<String, Double> updateCount(Map<String, Double> partialSummary, Map<String, Double> summary) {
 		summary = summary == null ? new HashMap<>() : summary;
-		for (Entry<String, Integer> entry : partialSummary.entrySet()) {
+		for (Entry<String, Double> entry : partialSummary.entrySet()) {
 			String key = entry.getKey();
-			Integer value = entry.getValue();
+			Double value = entry.getValue();
 			if (summary.containsKey(key)) {
 				summary.put(key, summary.get(key) + value);
 			} else {
@@ -19,11 +19,11 @@ public class MapUtil {
 		return summary;
 	}
 	
-	public static Map<String, Integer> updateCount(String key, Map<String, Integer> summary) {
+	public static Map<String, Double> updateCount(String key, Map<String, Double> summary) {
 		if (summary.containsKey(key)) {
-			summary.put(key, summary.get(key) + 1);
+			summary.put(key, summary.get(key) + 1d);
 		} else {
-			summary.put(key, 1);
+			summary.put(key, 1d);
 		}
 		return summary;
 	}
