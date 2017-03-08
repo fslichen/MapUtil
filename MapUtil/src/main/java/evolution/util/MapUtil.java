@@ -18,4 +18,13 @@ public class MapUtil {
 		}
 		return summary;
 	}
+	
+	public static Map<String, Integer> updateCount(String key, Map<String, Integer> summary) {
+		if (summary.containsKey(key)) {
+			summary.put(key, summary.get(key) + 1);
+		} else {
+			summary.put(key, 1);
+		}
+		return summary;
+	}
 }
